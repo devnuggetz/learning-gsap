@@ -1,9 +1,10 @@
 import './App.css';
 import {TweenMax, Power3} from 'gsap'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 function App() {
+  const [state, setState]= useState(false)
   let app = useRef(null)
   let circle= useRef(null);
   let circleRed= useRef(null);
@@ -15,6 +16,15 @@ function App() {
     TweenMax.from(circleRed, 0.8, {opacity:0, x:40, ease: Power3.easeOut, delay: .2})
   },[])
 
+  const handleExpand=()=>{
+    TweenMax.to(circle, .8, {width: 200, height: 200, ease: Power3.easeOut});
+    setState(true);
+  }
+  const handleShirnk=()=>{
+    TweenMax.to(circle, .8, {width: 75, height: 75, ease: Power3.easeOut});
+    setState(false);
+  }
+
   return (
 
     <div 
@@ -25,6 +35,7 @@ function App() {
       <header className="App-header">
         <div className='circle-container'>
           <div 
+          onClick={state?handleShirnk:handleExpand}
           ref={el=>{
             circle=el;
           }}
