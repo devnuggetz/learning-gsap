@@ -9,7 +9,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='circle-container'>
+          <div className='circle'>
 
+          </div>
+          <div className='circle red'>
+
+          </div>
+          <div className='circle blue'>
+
+          </div>
         </div>
       </header>
     </div>
